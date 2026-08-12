@@ -873,6 +873,7 @@ function App() {
   // ==========================================================
 
   const printReceipt = () => {
+<<<<<<< HEAD
   const receipt = document.querySelector(".receipt-modal");
 
   if (!receipt) {
@@ -882,6 +883,10 @@ function App() {
 
   window.print();
 };
+=======
+    window.print();
+  };
+>>>>>>> b1a75ee7474431e8ec88fb822becd127b559313a
 
   // ==========================================================
   // RETURN
@@ -2679,5 +2684,9 @@ function App() {
 // ============================================================
 // EXPORT
 // ============================================================
+<<<<<<< HEAD
 // TEST
+=======
+
+>>>>>>> b1a75ee7474431e8ec88fb822becd127b559313a
 export default App;
