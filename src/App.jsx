@@ -14,7 +14,6 @@ import ProductCard from "./components/ProductCard";
 // ============================================================
 
 const products = [
-
   // ==========================================================
   // PRINTING SERVICES
   // ==========================================================
@@ -346,7 +345,6 @@ const products = [
     price: 0,
     unit: "per set",
   },
-
 ];
 
 // ============================================================
@@ -354,7 +352,6 @@ const products = [
 // ============================================================
 
 const categories = [
-
   {
     id: 1,
     icon: "🖨️",
@@ -378,7 +375,6 @@ const categories = [
     description:
       "Personalized souvenirs, gifts, giveaways, and event essentials for special occasions.",
   },
-
 ];
 
 // ============================================================
@@ -386,7 +382,6 @@ const categories = [
 // ============================================================
 
 function App() {
-
   // ==========================================================
   // CART
   // ==========================================================
@@ -435,12 +430,9 @@ function App() {
 
   const [orders, setOrders] = useState(() => {
     try {
-      const savedOrders =
-        localStorage.getItem("rjdOrders");
+      const savedOrders = localStorage.getItem("rjdOrders");
 
-      return savedOrders
-        ? JSON.parse(savedOrders)
-        : [];
+      return savedOrders ? JSON.parse(savedOrders) : [];
     } catch {
       return [];
     }
@@ -453,10 +445,7 @@ function App() {
   // ==========================================================
 
   useEffect(() => {
-    localStorage.setItem(
-      "rjdOrders",
-      JSON.stringify(orders)
-    );
+    localStorage.setItem("rjdOrders", JSON.stringify(orders));
   }, [orders]);
 
   // ==========================================================
@@ -464,10 +453,7 @@ function App() {
   // ==========================================================
 
   const handleCustomerChange = (event) => {
-    const {
-      name,
-      value,
-    } = event.target;
+    const { name, value } = event.target;
 
     setCustomer((current) => ({
       ...current,
@@ -480,20 +466,14 @@ function App() {
   // ==========================================================
 
   const handleOrderInfoChange = (event) => {
-    const {
-      name,
-      value,
-    } = event.target;
+    const { name, value } = event.target;
 
     setOrderInfo((current) => ({
       ...current,
       [name]: value,
     }));
 
-    if (
-      name === "orderType" &&
-      value === "Pickup"
-    ) {
+    if (name === "orderType" && value === "Pickup") {
       setDeliveryFee(0);
     }
   };
@@ -504,23 +484,18 @@ function App() {
 
   const addToCart = (product) => {
     setCart((currentCart) => {
-
-      const existing =
-        currentCart.find(
-          (item) =>
-            item.id === product.id
-        );
+      const existing = currentCart.find(
+        (item) => item.id === product.id
+      );
 
       if (existing) {
-        return currentCart.map(
-          (item) =>
-            item.id === product.id
-              ? {
-                  ...item,
-                  quantity:
-                    item.quantity + 1,
-                }
-              : item
+        return currentCart.map((item) =>
+          item.id === product.id
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item
         );
       }
 
@@ -540,15 +515,13 @@ function App() {
 
   const increaseQuantity = (id) => {
     setCart((currentCart) =>
-      currentCart.map(
-        (item) =>
-          item.id === id
-            ? {
-                ...item,
-                quantity:
-                  item.quantity + 1,
-              }
-            : item
+      currentCart.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
+          : item
       )
     );
   };
@@ -556,29 +529,21 @@ function App() {
   const decreaseQuantity = (id) => {
     setCart((currentCart) =>
       currentCart
-        .map(
-          (item) =>
-            item.id === id
-              ? {
-                  ...item,
-                  quantity:
-                    item.quantity - 1,
-                }
-              : item
+        .map((item) =>
+          item.id === id
+            ? {
+                ...item,
+                quantity: item.quantity - 1,
+              }
+            : item
         )
-        .filter(
-          (item) =>
-            item.quantity > 0
-        )
+        .filter((item) => item.quantity > 0)
     );
   };
 
   const removeFromCart = (id) => {
     setCart((currentCart) =>
-      currentCart.filter(
-        (item) =>
-          item.id !== id
-      )
+      currentCart.filter((item) => item.id !== id)
     );
   };
 
@@ -587,7 +552,6 @@ function App() {
   // ==========================================================
 
   const clearOrder = () => {
-
     setCart([]);
 
     setCustomer({
@@ -611,62 +575,43 @@ function App() {
   // TOTALS
   // ==========================================================
 
-  const cartItemCount =
-    cart.reduce(
-      (total, item) =>
-        total + item.quantity,
-      0
-    );
+  const cartItemCount = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
-  const cartSubtotal =
-    cart.reduce(
-      (total, item) =>
-        total +
-        Number(item.price || 0) *
-          item.quantity,
-      0
-    );
+  const cartSubtotal = cart.reduce(
+    (total, item) =>
+      total + Number(item.price || 0) * item.quantity,
+    0
+  );
 
-  const safeDiscount =
-    Math.max(
-      0,
-      Number(discount) || 0
-    );
+  const safeDiscount = Math.max(
+    0,
+    Number(discount) || 0
+  );
 
   const safeDeliveryFee =
     orderInfo.orderType === "Delivery"
-      ? Math.max(
-          0,
-          Number(deliveryFee) || 0
-        )
+      ? Math.max(0, Number(deliveryFee) || 0)
       : 0;
 
-  const grandTotal =
-    Math.max(
-      0,
-      cartSubtotal -
-        safeDiscount +
-        safeDeliveryFee
-    );
+  const grandTotal = Math.max(
+    0,
+    cartSubtotal - safeDiscount + safeDeliveryFee
+  );
 
-  const safeDownpayment =
-    Math.min(
-      grandTotal,
-      Math.max(
-        0,
-        Number(downpayment) || 0
-      )
-    );
+  const safeDownpayment = Math.min(
+    grandTotal,
+    Math.max(0, Number(downpayment) || 0)
+  );
 
-  const balance =
-    Math.max(
-      0,
-      grandTotal -
-        safeDownpayment
-    );
+  const balance = Math.max(
+    0,
+    grandTotal - safeDownpayment
+  );
 
-  let paymentStatus =
-    "UNPAID";
+  let paymentStatus = "UNPAID";
 
   if (
     safeDownpayment > 0 &&
@@ -687,27 +632,21 @@ function App() {
   // ==========================================================
 
   const generateOrderNumber = () => {
-
     const date = new Date();
 
-    const year =
-      date.getFullYear();
+    const year = date.getFullYear();
 
-    const month =
-      String(
-        date.getMonth() + 1
-      ).padStart(2, "0");
+    const month = String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
 
-    const day =
-      String(
-        date.getDate()
-      ).padStart(2, "0");
+    const day = String(
+      date.getDate()
+    ).padStart(2, "0");
 
-    const random =
-      Math.floor(
-        100 +
-        Math.random() * 900
-      );
+    const random = Math.floor(
+      100 + Math.random() * 900
+    );
 
     return `RJD-${year}${month}${day}-${random}`;
   };
@@ -717,20 +656,13 @@ function App() {
   // ==========================================================
 
   const openCheckout = () => {
-
     if (cart.length === 0) {
-      alert(
-        "Please add at least one product."
-      );
+      alert("Please add at least one product.");
       return;
     }
 
-    if (
-      customer.name.trim() === ""
-    ) {
-      alert(
-        "Please enter the customer name."
-      );
+    if (customer.name.trim() === "") {
+      alert("Please enter the customer name.");
       return;
     }
 
@@ -742,16 +674,12 @@ function App() {
   // ==========================================================
 
   const confirmOrder = () => {
-
     const order = {
-
       id: Date.now(),
 
-      orderNumber:
-        generateOrderNumber(),
+      orderNumber: generateOrderNumber(),
 
-      date:
-        new Date().toLocaleString(),
+      date: new Date().toLocaleString(),
 
       customer: {
         ...customer,
@@ -761,41 +689,29 @@ function App() {
         ...orderInfo,
       },
 
-      items:
-        cart.map(
-          (item) => ({
-            ...item,
-          })
-        ),
+      items: cart.map((item) => ({
+        ...item,
+      })),
 
-      subtotal:
-        cartSubtotal,
+      subtotal: cartSubtotal,
 
-      discount:
-        safeDiscount,
+      discount: safeDiscount,
 
-      deliveryFee:
-        safeDeliveryFee,
+      deliveryFee: safeDeliveryFee,
 
-      grandTotal:
-        grandTotal,
+      grandTotal: grandTotal,
 
-      downpayment:
-        safeDownpayment,
+      downpayment: safeDownpayment,
 
-      balance:
-        balance,
+      balance: balance,
 
-      paymentStatus:
-        paymentStatus,
+      paymentStatus: paymentStatus,
     };
 
-    setOrders(
-      (currentOrders) => [
-        order,
-        ...currentOrders,
-      ]
-    );
+    setOrders((currentOrders) => [
+      order,
+      ...currentOrders,
+    ]);
 
     setCompletedOrder(order);
 
@@ -809,22 +725,18 @@ function App() {
   // ==========================================================
 
   const deleteOrder = (id) => {
-
-    const confirmed =
-      window.confirm(
-        "Are you sure you want to delete this order?"
-      );
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this order?"
+    );
 
     if (!confirmed) {
       return;
     }
 
-    setOrders(
-      (currentOrders) =>
-        currentOrders.filter(
-          (order) =>
-            order.id !== id
-        )
+    setOrders((currentOrders) =>
+      currentOrders.filter(
+        (order) => order.id !== id
+      )
     );
 
     if (
@@ -839,54 +751,46 @@ function App() {
   // SEARCH
   // ==========================================================
 
-  const filteredOrders =
-    orders.filter(
-      (order) => {
+  const filteredOrders = orders.filter(
+    (order) => {
+      const search = orderSearch
+        .toLowerCase()
+        .trim();
 
-        const search =
-          orderSearch
-            .toLowerCase()
-            .trim();
-
-        if (!search) {
-          return true;
-        }
-
-        return (
-          order.orderNumber
-            .toLowerCase()
-            .includes(search) ||
-
-          order.customer.name
-            .toLowerCase()
-            .includes(search) ||
-
-          order.customer.contact
-            .toLowerCase()
-            .includes(search)
-        );
+      if (!search) {
+        return true;
       }
-    );
+
+      return (
+        order.orderNumber
+          .toLowerCase()
+          .includes(search) ||
+        order.customer.name
+          .toLowerCase()
+          .includes(search) ||
+        order.customer.contact
+          .toLowerCase()
+          .includes(search)
+      );
+    }
+  );
 
   // ==========================================================
   // PRINT RECEIPT
   // ==========================================================
 
   const printReceipt = () => {
-<<<<<<< HEAD
-  const receipt = document.querySelector(".receipt-modal");
+    const receipt = document.querySelector(
+      ".receipt-modal"
+    );
 
-  if (!receipt) {
-    alert("Receipt is not available.");
-    return;
-  }
+    if (!receipt) {
+      alert("Receipt is not available.");
+      return;
+    }
 
-  window.print();
-};
-=======
     window.print();
   };
->>>>>>> b1a75ee7474431e8ec88fb822becd127b559313a
 
   // ==========================================================
   // RETURN
@@ -894,11 +798,9 @@ function App() {
 
   return (
     <div className="app">
-
       <Header />
 
       <main>
-
         {/* ==================================================
             HERO
         ================================================== */}
@@ -907,11 +809,8 @@ function App() {
           id="home"
           className="hero"
         >
-
           <div className="container hero-content">
-
             <div className="hero-text">
-
               <span className="eyebrow">
                 RJD INKS & PRINTS
               </span>
@@ -919,7 +818,6 @@ function App() {
               <h1>
                 Print your ideas.
                 <br />
-
                 <span>
                   Make them memorable.
                 </span>
@@ -932,7 +830,6 @@ function App() {
               </p>
 
               <div className="hero-buttons">
-
                 <a
                   href="#products"
                   className="primary-button"
@@ -946,11 +843,9 @@ function App() {
                 >
                   Request a Quote
                 </a>
-
               </div>
 
               <div className="hero-info">
-
                 <span>
                   ✓ Custom Designs
                 </span>
@@ -962,15 +857,11 @@ function App() {
                 <span>
                   ✓ Nationwide Shipping
                 </span>
-
               </div>
-
             </div>
 
             <div className="hero-card">
-
               <div className="hero-card-inner">
-
                 <div className="sparkle">
                   ✦
                 </div>
@@ -992,13 +883,9 @@ function App() {
                 <small>
                   Made with care for your business.
                 </small>
-
               </div>
-
             </div>
-
           </div>
-
         </section>
 
         {/* ==================================================
@@ -1009,11 +896,8 @@ function App() {
           id="categories"
           className="section"
         >
-
           <div className="container">
-
             <div className="section-heading">
-
               <span className="section-label">
                 WHAT WE OFFER
               </span>
@@ -1027,19 +911,15 @@ function App() {
                 you need for your business, events, and
                 special occasions.
               </p>
-
             </div>
 
             <div className="category-grid">
-
               {categories.map(
                 (category) => (
-
                   <div
                     className="category-card"
                     key={category.id}
                   >
-
                     <div className="category-icon">
                       {category.icon}
                     </div>
@@ -1055,16 +935,11 @@ function App() {
                     <a href="#products">
                       View Products →
                     </a>
-
                   </div>
-
                 )
               )}
-
             </div>
-
           </div>
-
         </section>
 
         {/* ==================================================
@@ -1075,13 +950,9 @@ function App() {
           id="products"
           className="section products-section"
         >
-
           <div className="container">
-
             <div className="section-heading product-heading">
-
               <div>
-
                 <span className="section-label">
                   FEATURED PRODUCTS
                 </span>
@@ -1089,7 +960,6 @@ function App() {
                 <h2>
                   Popular Products
                 </h2>
-
               </div>
 
               <a
@@ -1098,27 +968,20 @@ function App() {
               >
                 View All Products →
               </a>
-
             </div>
 
             <div className="product-grid">
-
               {products.map(
                 (product) => (
-
                   <ProductCard
                     key={product.id}
                     product={product}
                     addToCart={addToCart}
                   />
-
                 )
               )}
-
             </div>
-
           </div>
-
         </section>
 
         {/* ==================================================
@@ -1129,11 +992,8 @@ function App() {
           id="order"
           className="order-section"
         >
-
           <div className="container">
-
             <div className="section-heading">
-
               <span className="section-label">
                 CURRENT ORDER
               </span>
@@ -1148,15 +1008,12 @@ function App() {
                   ? "s"
                   : ""}
               </p>
-
             </div>
 
             {/* CUSTOMER */}
 
             <div className="pos-card">
-
               <div className="pos-card-header">
-
                 <span className="section-label">
                   CUSTOMER INFORMATION
                 </span>
@@ -1164,13 +1021,10 @@ function App() {
                 <h3>
                   Customer Details
                 </h3>
-
               </div>
 
               <div className="form-grid">
-
                 <div className="form-group">
-
                   <label>
                     Customer Name
                   </label>
@@ -1178,19 +1032,15 @@ function App() {
                   <input
                     type="text"
                     name="name"
-                    value={
-                      customer.name
-                    }
+                    value={customer.name}
                     onChange={
                       handleCustomerChange
                     }
                     placeholder="Enter customer name"
                   />
-
                 </div>
 
                 <div className="form-group">
-
                   <label>
                     Contact Number
                   </label>
@@ -1198,19 +1048,15 @@ function App() {
                   <input
                     type="tel"
                     name="contact"
-                    value={
-                      customer.contact
-                    }
+                    value={customer.contact}
                     onChange={
                       handleCustomerChange
                     }
                     placeholder="09XXXXXXXXX"
                   />
-
                 </div>
 
                 <div className="form-group">
-
                   <label>
                     Email
                   </label>
@@ -1218,27 +1064,20 @@ function App() {
                   <input
                     type="email"
                     name="email"
-                    value={
-                      customer.email
-                    }
+                    value={customer.email}
                     onChange={
                       handleCustomerChange
                     }
                     placeholder="customer@email.com"
                   />
-
                 </div>
-
               </div>
-
             </div>
 
             {/* ORDER INFORMATION */}
 
             <div className="pos-card">
-
               <div className="pos-card-header">
-
                 <span className="section-label">
                   ORDER INFORMATION
                 </span>
@@ -1246,13 +1085,10 @@ function App() {
                 <h3>
                   Order Details
                 </h3>
-
               </div>
 
               <div className="form-grid">
-
                 <div className="form-group">
-
                   <label>
                     Order Type
                   </label>
@@ -1266,7 +1102,6 @@ function App() {
                       handleOrderInfoChange
                     }
                   >
-
                     <option value="Pickup">
                       Pickup
                     </option>
@@ -1274,13 +1109,10 @@ function App() {
                     <option value="Delivery">
                       Delivery
                     </option>
-
                   </select>
-
                 </div>
 
                 <div className="form-group">
-
                   <label>
                     Due Date
                   </label>
@@ -1295,39 +1127,30 @@ function App() {
                       handleOrderInfoChange
                     }
                   />
-
                 </div>
 
                 {orderInfo.orderType ===
                   "Delivery" && (
+                    <div className="form-group">
+                      <label>
+                        Delivery Fee
+                      </label>
 
-                  <div className="form-group">
-
-                    <label>
-                      Delivery Fee
-                    </label>
-
-                    <input
-                      type="number"
-                      min="0"
-                      value={
-                        deliveryFee
-                      }
-                      onChange={(event) =>
-                        setDeliveryFee(
-                          event.target.value
-                        )
-                      }
-                    />
-
-                  </div>
-
-                )}
-
+                      <input
+                        type="number"
+                        min="0"
+                        value={deliveryFee}
+                        onChange={(event) =>
+                          setDeliveryFee(
+                            event.target.value
+                          )
+                        }
+                      />
+                    </div>
+                  )}
               </div>
 
               <div className="form-group">
-
                 <label>
                   Customer Notes / Order Notes
                 </label>
@@ -1343,17 +1166,13 @@ function App() {
                   placeholder="Enter special instructions..."
                   rows="4"
                 />
-
               </div>
-
             </div>
 
             {/* ITEMS */}
 
             <div className="pos-card">
-
               <div className="pos-card-header">
-
                 <span className="section-label">
                   ORDER ITEMS
                 </span>
@@ -1361,15 +1180,11 @@ function App() {
                 <h3>
                   Products
                 </h3>
-
               </div>
 
               <div className="order-list">
-
                 {cart.length === 0 ? (
-
                   <div className="empty-cart">
-
                     <p>
                       🛒 Your order is currently empty.
                     </p>
@@ -1380,21 +1195,15 @@ function App() {
                     >
                       Browse Products
                     </a>
-
                   </div>
-
                 ) : (
-
                   cart.map(
                     (item) => (
-
                       <div
                         className="order-item"
                         key={item.id}
                       >
-
                         <div className="order-item-info">
-
                           <strong>
                             {item.name}
                           </strong>
@@ -1409,11 +1218,9 @@ function App() {
                             {item.price *
                               item.quantity}
                           </p>
-
                         </div>
 
                         <div className="order-item-controls">
-
                           <button
                             type="button"
                             onClick={() =>
@@ -1439,7 +1246,6 @@ function App() {
                           >
                             +
                           </button>
-
                         </div>
 
                         <strong>
@@ -1459,24 +1265,17 @@ function App() {
                         >
                           Remove
                         </button>
-
                       </div>
-
                     )
                   )
-
                 )}
-
               </div>
-
             </div>
 
             {/* PAYMENT */}
 
             <div className="pos-card">
-
               <div className="pos-card-header">
-
                 <span className="section-label">
                   PAYMENT
                 </span>
@@ -1484,13 +1283,10 @@ function App() {
                 <h3>
                   Order Summary
                 </h3>
-
               </div>
 
               <div className="payment-grid">
-
                 <div className="summary-row">
-
                   <span>
                     Subtotal
                   </span>
@@ -1498,11 +1294,9 @@ function App() {
                   <strong>
                     ₱{cartSubtotal}
                   </strong>
-
                 </div>
 
                 <div className="form-group">
-
                   <label>
                     Discount
                   </label>
@@ -1510,20 +1304,16 @@ function App() {
                   <input
                     type="number"
                     min="0"
-                    value={
-                      discount
-                    }
+                    value={discount}
                     onChange={(event) =>
                       setDiscount(
                         event.target.value
                       )
                     }
                   />
-
                 </div>
 
                 <div className="summary-row">
-
                   <span>
                     Delivery Fee
                   </span>
@@ -1531,11 +1321,9 @@ function App() {
                   <strong>
                     ₱{safeDeliveryFee}
                   </strong>
-
                 </div>
 
                 <div className="summary-row grand-total">
-
                   <span>
                     Grand Total
                   </span>
@@ -1543,11 +1331,9 @@ function App() {
                   <strong>
                     ₱{grandTotal}
                   </strong>
-
                 </div>
 
                 <div className="form-group">
-
                   <label>
                     Downpayment
                   </label>
@@ -1556,20 +1342,16 @@ function App() {
                     type="number"
                     min="0"
                     max={grandTotal}
-                    value={
-                      downpayment
-                    }
+                    value={downpayment}
                     onChange={(event) =>
                       setDownpayment(
                         event.target.value
                       )
                     }
                   />
-
                 </div>
 
                 <div className="summary-row balance-row">
-
                   <span>
                     Remaining Balance
                   </span>
@@ -1577,11 +1359,9 @@ function App() {
                   <strong>
                     ₱{balance}
                   </strong>
-
                 </div>
 
                 <div className="summary-row">
-
                   <span>
                     Payment Status
                   </span>
@@ -1589,17 +1369,12 @@ function App() {
                   <strong>
                     {paymentStatus}
                   </strong>
-
                 </div>
-
               </div>
-
             </div>
 
             {cart.length > 0 && (
-
               <div className="order-actions">
-
                 <button
                   type="button"
                   className="secondary-button"
@@ -1619,13 +1394,9 @@ function App() {
                 >
                   Checkout
                 </button>
-
               </div>
-
             )}
-
           </div>
-
         </section>
 
         {/* ==================================================
@@ -1636,11 +1407,8 @@ function App() {
           id="orders"
           className="section order-history-section"
         >
-
           <div className="container">
-
             <div className="section-heading">
-
               <span className="section-label">
                 POS RECORDS
               </span>
@@ -1652,11 +1420,9 @@ function App() {
               <p>
                 View and manage your completed orders.
               </p>
-
             </div>
 
             <div className="order-history-toolbar">
-
               <input
                 type="search"
                 value={
@@ -1676,13 +1442,10 @@ function App() {
                   ? "Order"
                   : "Orders"}
               </strong>
-
             </div>
 
             {filteredOrders.length === 0 ? (
-
               <div className="no-orders">
-
                 <div className="no-orders-icon">
                   📋
                 </div>
@@ -1694,25 +1457,17 @@ function App() {
                 <p>
                   Completed orders will appear here.
                 </p>
-
               </div>
-
             ) : (
-
               <div className="order-history-list">
-
                 {filteredOrders.map(
                   (order) => (
-
                     <div
                       className="history-card"
                       key={order.id}
                     >
-
                       <div className="history-card-header">
-
                         <div>
-
                           <span className="history-order-number">
                             {order.orderNumber}
                           </span>
@@ -1720,7 +1475,6 @@ function App() {
                           <small>
                             {order.date}
                           </small>
-
                         </div>
 
                         <span
@@ -1728,13 +1482,10 @@ function App() {
                         >
                           {order.paymentStatus}
                         </span>
-
                       </div>
 
                       <div className="history-card-body">
-
                         <div>
-
                           <span>
                             Customer
                           </span>
@@ -1742,11 +1493,9 @@ function App() {
                           <strong>
                             {order.customer.name}
                           </strong>
-
                         </div>
 
                         <div>
-
                           <span>
                             Items
                           </span>
@@ -1759,11 +1508,9 @@ function App() {
                               0
                             )}
                           </strong>
-
                         </div>
 
                         <div>
-
                           <span>
                             Total
                           </span>
@@ -1772,11 +1519,9 @@ function App() {
                             ₱
                             {order.grandTotal}
                           </strong>
-
                         </div>
 
                         <div>
-
                           <span>
                             Balance
                           </span>
@@ -1785,13 +1530,10 @@ function App() {
                             ₱
                             {order.balance}
                           </strong>
-
                         </div>
-
                       </div>
 
                       <div className="history-card-actions">
-
                         <button
                           type="button"
                           className="secondary-button"
@@ -1815,20 +1557,13 @@ function App() {
                         >
                           Delete
                         </button>
-
                       </div>
-
                     </div>
-
                   )
                 )}
-
               </div>
-
             )}
-
           </div>
-
         </section>
 
         {/* ==================================================
@@ -1839,11 +1574,8 @@ function App() {
           id="about"
           className="about-section"
         >
-
           <div className="container about-content">
-
             <div>
-
               <span className="section-label">
                 ABOUT RJD
               </span>
@@ -1851,11 +1583,9 @@ function App() {
               <h2>
                 Made with care for your business.
               </h2>
-
             </div>
 
             <div>
-
               <p>
                 RJD Inks & Prints provides printing,
                 business essentials, crafts, and
@@ -1867,11 +1597,8 @@ function App() {
                 We offer customized products, bulk orders,
                 and nationwide shipping.
               </p>
-
             </div>
-
           </div>
-
         </section>
 
         {/* ==================================================
@@ -1882,11 +1609,8 @@ function App() {
           id="contact"
           className="contact-section"
         >
-
           <div className="container contact-content">
-
             <div>
-
               <span className="section-label">
                 LET'S WORK TOGETHER
               </span>
@@ -1899,11 +1623,9 @@ function App() {
                 Send us your requirements and we'll
                 help you create the perfect order.
               </p>
-
             </div>
 
             <div className="contact-buttons">
-
               <a
                 href="mailto:rjd.inksandprints@gmail.com"
                 className="primary-button"
@@ -1919,13 +1641,9 @@ function App() {
               >
                 Facebook
               </a>
-
             </div>
-
           </div>
-
         </section>
-
       </main>
 
       {/* ====================================================
@@ -1933,11 +1651,8 @@ function App() {
       ==================================================== */}
 
       <footer className="footer">
-
         <div className="container footer-grid">
-
           <div>
-
             <div className="footer-logo">
               RJD Inks & Prints
             </div>
@@ -1949,11 +1664,9 @@ function App() {
             <p>
               Made with care for your business.
             </p>
-
           </div>
 
           <div>
-
             <h4>
               Quick Links
             </h4>
@@ -1981,11 +1694,9 @@ function App() {
             <a href="#about">
               About Us
             </a>
-
           </div>
 
           <div>
-
             <h4>
               Contact
             </h4>
@@ -2001,24 +1712,17 @@ function App() {
             <p>
               rjd.inksandprints@gmail.com
             </p>
-
           </div>
-
         </div>
 
         <div className="footer-bottom">
-
           <div className="container">
-
             ©{" "}
             {new Date().getFullYear()}{" "}
             RJD Inks & Prints.
             All rights reserved.
-
           </div>
-
         </div>
-
       </footer>
 
       {/* ====================================================
@@ -2026,15 +1730,10 @@ function App() {
       ==================================================== */}
 
       {showCheckout && (
-
         <div className="checkout-overlay">
-
           <div className="checkout-modal">
-
             <div className="checkout-header">
-
               <div>
-
                 <span className="section-label">
                   REVIEW ORDER
                 </span>
@@ -2042,7 +1741,6 @@ function App() {
                 <h2>
                   Confirm Your Order
                 </h2>
-
               </div>
 
               <button
@@ -2054,11 +1752,9 @@ function App() {
               >
                 ×
               </button>
-
             </div>
 
             <div className="checkout-section">
-
               <h3>
                 Customer
               </h3>
@@ -2080,11 +1776,9 @@ function App() {
                   {customer.email}
                 </p>
               )}
-
             </div>
 
             <div className="checkout-section">
-
               <h3>
                 Order Details
               </h3>
@@ -2099,27 +1793,21 @@ function App() {
                 {orderInfo.dueDate ||
                   "Not specified"}
               </p>
-
             </div>
 
             <div className="checkout-section">
-
               <h3>
                 Products
               </h3>
 
               <div className="checkout-items">
-
                 {cart.map(
                   (item) => (
-
                     <div
                       className="checkout-item"
                       key={item.id}
                     >
-
                       <div>
-
                         <strong>
                           {item.name}
                         </strong>
@@ -2128,7 +1816,6 @@ function App() {
                           {item.quantity} × ₱
                           {item.price}
                         </span>
-
                       </div>
 
                       <strong>
@@ -2136,73 +1823,86 @@ function App() {
                         {item.price *
                           item.quantity}
                       </strong>
-
                     </div>
-
                   )
                 )}
-
               </div>
-
             </div>
 
             <div className="checkout-total">
-
               <div>
-                <span>Subtotal</span>
+                <span>
+                  Subtotal
+                </span>
+
                 <strong>
                   ₱{cartSubtotal}
                 </strong>
               </div>
 
               <div>
-                <span>Discount</span>
+                <span>
+                  Discount
+                </span>
+
                 <strong>
                   − ₱{safeDiscount}
                 </strong>
               </div>
 
               <div>
-                <span>Delivery Fee</span>
+                <span>
+                  Delivery Fee
+                </span>
+
                 <strong>
                   ₱{safeDeliveryFee}
                 </strong>
               </div>
 
               <div className="checkout-grand-total">
-                <span>Grand Total</span>
+                <span>
+                  Grand Total
+                </span>
+
                 <strong>
                   ₱{grandTotal}
                 </strong>
               </div>
 
               <div>
-                <span>Downpayment</span>
+                <span>
+                  Downpayment
+                </span>
+
                 <strong>
                   ₱{safeDownpayment}
                 </strong>
               </div>
 
               <div>
-                <span>Balance</span>
+                <span>
+                  Balance
+                </span>
+
                 <strong>
                   ₱{balance}
                 </strong>
               </div>
 
               <div>
-                <span>Status</span>
+                <span>
+                  Status
+                </span>
+
                 <strong>
                   {paymentStatus}
                 </strong>
               </div>
-
             </div>
 
             {orderInfo.notes && (
-
               <div className="checkout-section">
-
                 <h3>
                   Notes
                 </h3>
@@ -2210,13 +1910,10 @@ function App() {
                 <p>
                   {orderInfo.notes}
                 </p>
-
               </div>
-
             )}
 
             <div className="checkout-actions">
-
               <button
                 type="button"
                 className="secondary-button"
@@ -2236,13 +1933,9 @@ function App() {
               >
                 Confirm Order
               </button>
-
             </div>
-
           </div>
-
         </div>
-
       )}
 
       {/* ====================================================
@@ -2250,11 +1943,8 @@ function App() {
       ==================================================== */}
 
       {completedOrder && (
-
         <div className="checkout-overlay">
-
           <div className="checkout-modal success-modal">
-
             <div className="success-icon">
               ✓
             </div>
@@ -2272,7 +1962,6 @@ function App() {
             </p>
 
             <div className="order-number">
-
               <span>
                 Order Number
               </span>
@@ -2280,43 +1969,51 @@ function App() {
               <strong>
                 {completedOrder.orderNumber}
               </strong>
-
             </div>
 
             <div className="success-summary">
-
               <div>
-                <span>Customer</span>
+                <span>
+                  Customer
+                </span>
+
                 <strong>
                   {completedOrder.customer.name}
                 </strong>
               </div>
 
               <div>
-                <span>Total</span>
+                <span>
+                  Total
+                </span>
+
                 <strong>
                   ₱{completedOrder.grandTotal}
                 </strong>
               </div>
 
               <div>
-                <span>Downpayment</span>
+                <span>
+                  Downpayment
+                </span>
+
                 <strong>
                   ₱{completedOrder.downpayment}
                 </strong>
               </div>
 
               <div>
-                <span>Balance</span>
+                <span>
+                  Balance
+                </span>
+
                 <strong>
                   ₱{completedOrder.balance}
                 </strong>
               </div>
-
             </div>
 
             <div className="checkout-actions">
-
               <button
                 type="button"
                 className="primary-button"
@@ -2326,13 +2023,9 @@ function App() {
               >
                 Done
               </button>
-
             </div>
-
           </div>
-
         </div>
-
       )}
 
       {/* ====================================================
@@ -2340,15 +2033,11 @@ function App() {
       ==================================================== */}
 
       {selectedOrder && (
-
         <div className="checkout-overlay receipt-overlay">
-
           <div className="receipt-modal">
-
             {/* RECEIPT HEADER */}
 
             <div className="receipt-header">
-
               <div className="receipt-business-name">
                 RJD INKS & PRINTS
               </div>
@@ -2364,7 +2053,6 @@ function App() {
               <div className="receipt-business-contact">
                 rjd.inksandprints@gmail.com
               </div>
-
             </div>
 
             <div className="receipt-divider">
@@ -2374,7 +2062,6 @@ function App() {
             {/* ORDER INFORMATION */}
 
             <div className="receipt-info">
-
               <div>
                 <span>
                   Order No.
@@ -2406,7 +2093,6 @@ function App() {
               </div>
 
               {selectedOrder.customer.contact && (
-
                 <div>
                   <span>
                     Contact
@@ -2416,7 +2102,6 @@ function App() {
                     {selectedOrder.customer.contact}
                   </strong>
                 </div>
-
               )}
 
               <div>
@@ -2430,7 +2115,6 @@ function App() {
               </div>
 
               {selectedOrder.orderInfo.dueDate && (
-
                 <div>
                   <span>
                     Due Date
@@ -2440,9 +2124,7 @@ function App() {
                     {selectedOrder.orderInfo.dueDate}
                   </strong>
                 </div>
-
               )}
-
             </div>
 
             <div className="receipt-divider">
@@ -2452,9 +2134,7 @@ function App() {
             {/* ITEMS */}
 
             <div className="receipt-items">
-
               <div className="receipt-items-heading">
-
                 <span>
                   ITEM
                 </span>
@@ -2466,17 +2146,14 @@ function App() {
                 <span>
                   AMOUNT
                 </span>
-
               </div>
 
               {selectedOrder.items.map(
                 (item) => (
-
                   <div
                     className="receipt-item"
                     key={item.id}
                   >
-
                     <div className="receipt-item-name">
                       {item.name}
                     </div>
@@ -2489,15 +2166,12 @@ function App() {
                       ₱
                       {Number(
                         item.price *
-                        item.quantity
+                          item.quantity
                       ).toLocaleString()}
                     </div>
-
                   </div>
-
                 )
               )}
-
             </div>
 
             <div className="receipt-divider">
@@ -2507,7 +2181,6 @@ function App() {
             {/* TOTALS */}
 
             <div className="receipt-totals">
-
               <div>
                 <span>
                   Subtotal
@@ -2548,7 +2221,6 @@ function App() {
               </div>
 
               <div className="receipt-total-main">
-
                 <span>
                   TOTAL
                 </span>
@@ -2559,7 +2231,6 @@ function App() {
                     selectedOrder.grandTotal
                   ).toLocaleString()}
                 </strong>
-
               </div>
 
               <div>
@@ -2576,7 +2247,6 @@ function App() {
               </div>
 
               <div className="receipt-balance">
-
                 <span>
                   BALANCE
                 </span>
@@ -2587,32 +2257,25 @@ function App() {
                     selectedOrder.balance
                   ).toLocaleString()}
                 </strong>
-
               </div>
-
             </div>
 
             {/* PAYMENT STATUS */}
 
             <div className="receipt-payment-status">
-
               PAYMENT STATUS:{" "}
               {selectedOrder.paymentStatus}
-
             </div>
 
             {/* NOTES */}
 
             {selectedOrder.orderInfo.notes && (
-
               <>
-
                 <div className="receipt-divider">
                   --------------------------------
                 </div>
 
                 <div className="receipt-notes">
-
                   <strong>
                     NOTES
                   </strong>
@@ -2620,17 +2283,13 @@ function App() {
                   <p>
                     {selectedOrder.orderInfo.notes}
                   </p>
-
                 </div>
-
               </>
-
             )}
 
             {/* FOOTER */}
 
             <div className="receipt-footer">
-
               <div>
                 Thank you for your order!
               </div>
@@ -2642,13 +2301,11 @@ function App() {
               <div className="receipt-footer-brand">
                 RJD Inks & Prints
               </div>
-
             </div>
 
             {/* BUTTONS */}
 
             <div className="receipt-actions">
-
               <button
                 type="button"
                 className="secondary-button"
@@ -2668,15 +2325,10 @@ function App() {
               >
                 🖨️ Print Receipt
               </button>
-
             </div>
-
           </div>
-
         </div>
-
       )}
-
     </div>
   );
 }
@@ -2684,9 +2336,5 @@ function App() {
 // ============================================================
 // EXPORT
 // ============================================================
-<<<<<<< HEAD
-// TEST
-=======
 
->>>>>>> b1a75ee7474431e8ec88fb822becd127b559313a
 export default App;
