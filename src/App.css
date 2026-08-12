@@ -1,3 +1,4 @@
+```css
 /* ============================================================
    RJD INKS & PRINTS
    APP.CSS
@@ -786,6 +787,7 @@ img {
   min-width: 25px;
 
   text-align: center;
+
   font-weight: 700;
 }
 
@@ -1130,7 +1132,7 @@ img {
   background: transparent;
   color: white;
 
-  border-color: rgba(255,255,255,0.35);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 /* ============================================================
@@ -1196,7 +1198,7 @@ img {
 .footer-bottom {
   padding: 18px 0;
 
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 
   color: #9f95a4;
 
@@ -1240,7 +1242,7 @@ img {
   border-radius: 20px;
 
   box-shadow:
-    0 30px 80px rgba(0,0,0,0.25);
+    0 30px 80px rgba(0, 0, 0, 0.25);
 }
 
 .checkout-header {
@@ -1464,7 +1466,7 @@ img {
   border-radius: 12px;
 
   box-shadow:
-    0 25px 70px rgba(0,0,0,0.25);
+    0 25px 70px rgba(0, 0, 0, 0.25);
 
   color: #111;
 
@@ -1595,6 +1597,7 @@ img {
 
 .receipt-total-main {
   margin-top: 4px;
+
   padding: 5px 0;
 
   border-top: 1px solid #111;
@@ -1672,14 +1675,14 @@ img {
 }
 
 /* ============================================================
-RESPONSIVE
-TABLET + MOBILE
-============================================================ */
+   RESPONSIVE
+   TABLET + MOBILE
+   ============================================================ */
 
 /* ============================================================
-TABLET
-1024px and below
-============================================================ */
+   TABLET
+   1024px and below
+   ============================================================ */
 
 @media (max-width: 1024px) {
 
@@ -1702,7 +1705,6 @@ TABLET
     font-size: 13px;
   }
 
-
   /* HERO */
 
   .hero {
@@ -1722,26 +1724,27 @@ TABLET
     font-size: 16px;
   }
 
-
   /* CATEGORIES */
 
   .category-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
     gap: 18px;
   }
-
 
   /* PRODUCTS */
 
   .product-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
     gap: 18px;
   }
 
   .product-card-content {
     padding: 18px;
   }
-
 
   /* POS */
 
@@ -1754,7 +1757,8 @@ TABLET
   }
 
   .form-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
   }
 
   .order-item {
@@ -1770,13 +1774,11 @@ TABLET
     justify-content: center;
   }
 
-
   /* PAYMENT */
 
   .payment-grid {
     max-width: 100%;
   }
-
 
   /* ORDER HISTORY */
 
@@ -1785,9 +1787,9 @@ TABLET
   }
 
   .history-card-body {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns:
+      repeat(4, 1fr);
   }
-
 
   /* ABOUT */
 
@@ -1796,13 +1798,11 @@ TABLET
     gap: 40px;
   }
 
-
   /* CONTACT */
 
   .contact-content {
     gap: 30px;
   }
-
 
   /* FOOTER */
 
@@ -1812,11 +1812,10 @@ TABLET
   }
 }
 
-
 /* ============================================================
-TABLET / SMALL TABLET
-850px and below
-============================================================ */
+   TABLET / SMALL TABLET
+   850px and below
+   ============================================================ */
 
 @media (max-width: 850px) {
 
@@ -1824,23 +1823,15 @@ TABLET / SMALL TABLET
     width: min(100% - 30px, 1180px);
   }
 
-
   /* HEADER */
 
   .header-inner {
     min-height: 68px;
   }
 
-  /*
-  Hide desktop navigation.
-  If you later add a mobile menu button,
-  this space can be used for it.
-  */
-
   .nav {
     display: none;
   }
-
 
   /* HERO */
 
@@ -1874,27 +1865,25 @@ TABLET / SMALL TABLET
     min-height: 320px;
   }
 
-
   /* CATEGORIES */
 
   .category-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
   }
-
 
   /* PRODUCTS */
 
   .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
   }
-
 
   /* POS FORMS */
 
   .form-grid {
     grid-template-columns: 1fr;
   }
-
 
   /* ORDER ITEM */
 
@@ -1910,7 +1899,6 @@ TABLET / SMALL TABLET
     justify-content: flex-start;
   }
 
-
   /* ORDER HISTORY */
 
   .order-history-toolbar {
@@ -1921,14 +1909,12 @@ TABLET / SMALL TABLET
     min-width: 200px;
   }
 
-
   /* ABOUT */
 
   .about-content {
     grid-template-columns: 1fr;
     gap: 30px;
   }
-
 
   /* CONTACT */
 
@@ -1937,7 +1923,6 @@ TABLET / SMALL TABLET
     align-items: flex-start;
   }
 
-
   /* FOOTER */
 
   .footer-grid {
@@ -1945,17 +1930,14 @@ TABLET / SMALL TABLET
   }
 }
 
-
 /* ============================================================
-MOBILE
-600px and below
-============================================================ */
+   MOBILE
+   600px and below
+   ============================================================ */
 
 @media (max-width: 600px) {
 
-  /* ----------------------------------------------------------
-  GLOBAL
-  ---------------------------------------------------------- */
+  /* GLOBAL */
 
   html {
     overflow-x: hidden;
@@ -1970,10 +1952,7 @@ MOBILE
     max-width: none;
   }
 
-
-  /* ----------------------------------------------------------
-  HEADER
-  ---------------------------------------------------------- */
+  /* HEADER */
 
   .header-inner {
     min-height: 62px;
@@ -1985,22 +1964,18 @@ MOBILE
     font-size: 18px;
   }
 
-
-  /* ----------------------------------------------------------
-  BUTTONS
-  ---------------------------------------------------------- */
+  /* BUTTONS */
 
   .primary-button,
   .secondary-button {
     min-height: 44px;
+
     padding: 10px 16px;
+
     font-size: 13px;
   }
 
-
-  /* ----------------------------------------------------------
-  HERO
-  ---------------------------------------------------------- */
+  /* HERO */
 
   .hero {
     padding: 50px 0;
@@ -2012,22 +1987,26 @@ MOBILE
 
   .eyebrow {
     margin-bottom: 12px;
+
     font-size: 11px;
   }
 
   .hero h1 {
     margin-bottom: 18px;
+
     font-size: 38px;
     line-height: 1.1;
   }
 
   .hero-text > p {
     margin-bottom: 22px;
+
     font-size: 15px;
   }
 
   .hero-buttons {
     flex-direction: column;
+
     gap: 10px;
   }
 
@@ -2038,18 +2017,23 @@ MOBILE
 
   .hero-info {
     flex-direction: column;
+
     gap: 8px;
+
     font-size: 12px;
   }
 
   .hero-card {
     min-height: 280px;
+
     padding: 18px;
+
     border-radius: 22px;
   }
 
   .hero-card-inner {
     padding: 38px 20px;
+
     border-radius: 18px;
   }
 
@@ -2061,10 +2045,7 @@ MOBILE
     font-size: 21px;
   }
 
-
-  /* ----------------------------------------------------------
-  SECTIONS
-  ---------------------------------------------------------- */
+  /* SECTIONS */
 
   .section,
   .order-section,
@@ -2084,13 +2065,11 @@ MOBILE
     font-size: 14px;
   }
 
-
-  /* ----------------------------------------------------------
-  CATEGORIES
-  ---------------------------------------------------------- */
+  /* CATEGORIES */
 
   .category-grid {
     grid-template-columns: 1fr;
+
     gap: 14px;
   }
 
@@ -2102,10 +2081,7 @@ MOBILE
     font-size: 18px;
   }
 
-
-  /* ----------------------------------------------------------
-  PRODUCTS
-  ---------------------------------------------------------- */
+  /* PRODUCTS */
 
   .products-section {
     padding: 55px 0;
@@ -2113,8 +2089,11 @@ MOBILE
 
   .product-heading {
     flex-direction: column;
+
     align-items: flex-start;
+
     gap: 8px;
+
     text-align: left;
   }
 
@@ -2124,6 +2103,7 @@ MOBILE
 
   .product-grid {
     grid-template-columns: 1fr;
+
     gap: 15px;
   }
 
@@ -2143,14 +2123,13 @@ MOBILE
     min-height: auto;
   }
 
-
-  /* ----------------------------------------------------------
-  POS
-  ---------------------------------------------------------- */
+  /* POS */
 
   .pos-card {
     margin-bottom: 16px;
+
     padding: 18px;
+
     border-radius: 15px;
   }
 
@@ -2162,13 +2141,11 @@ MOBILE
     font-size: 19px;
   }
 
-
-  /* ----------------------------------------------------------
-  FORMS
-  ---------------------------------------------------------- */
+  /* FORMS */
 
   .form-grid {
     grid-template-columns: 1fr;
+
     gap: 0;
   }
 
@@ -2184,14 +2161,13 @@ MOBILE
   .form-group select,
   .form-group textarea {
     min-height: 44px;
+
     padding: 11px 12px;
+
     font-size: 14px;
   }
 
-
-  /* ----------------------------------------------------------
-  ORDER LIST
-  ---------------------------------------------------------- */
+  /* ORDER LIST */
 
   .order-list {
     gap: 10px;
@@ -2199,7 +2175,9 @@ MOBILE
 
   .order-item {
     grid-template-columns: 1fr;
+
     gap: 12px;
+
     padding: 15px;
   }
 
@@ -2226,6 +2204,7 @@ MOBILE
 
   .remove-item {
     width: 100%;
+
     padding: 10px 12px;
   }
 
@@ -2233,19 +2212,19 @@ MOBILE
     padding: 30px 15px;
   }
 
-
-  /* ----------------------------------------------------------
-  PAYMENT
-  ---------------------------------------------------------- */
+  /* PAYMENT */
 
   .payment-grid {
     max-width: 100%;
+
     margin-left: 0;
   }
 
   .summary-row {
     gap: 12px;
+
     padding: 10px 0;
+
     font-size: 13px;
   }
 
@@ -2258,14 +2237,13 @@ MOBILE
     font-size: 18px;
   }
 
-
-  /* ----------------------------------------------------------
-  ORDER ACTIONS
-  ---------------------------------------------------------- */
+  /* ORDER ACTIONS */
 
   .order-actions {
     flex-direction: column;
+
     gap: 10px;
+
     margin-top: 18px;
   }
 
@@ -2274,25 +2252,26 @@ MOBILE
     width: 100%;
   }
 
-
-  /* ----------------------------------------------------------
-  ORDER HISTORY
-  ---------------------------------------------------------- */
+  /* ORDER HISTORY */
 
   .order-history-toolbar {
     flex-direction: column;
+
     align-items: stretch;
+
     gap: 10px;
   }
 
   .order-history-toolbar input {
     width: 100%;
+
     min-width: 0;
     min-height: 44px;
   }
 
   .order-history-list {
     grid-template-columns: 1fr;
+
     gap: 14px;
   }
 
@@ -2302,11 +2281,14 @@ MOBILE
 
   .history-card-header {
     gap: 10px;
+
     margin-bottom: 15px;
   }
 
   .history-card-body {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+      repeat(2, 1fr);
+
     gap: 10px;
   }
 
@@ -2326,13 +2308,11 @@ MOBILE
     padding: 40px 20px;
   }
 
-
-  /* ----------------------------------------------------------
-  ABOUT
-  ---------------------------------------------------------- */
+  /* ABOUT */
 
   .about-content {
     grid-template-columns: 1fr;
+
     gap: 25px;
   }
 
@@ -2344,10 +2324,7 @@ MOBILE
     font-size: 14px;
   }
 
-
-  /* ----------------------------------------------------------
-  CONTACT
-  ---------------------------------------------------------- */
+  /* CONTACT */
 
   .contact-section {
     padding: 55px 0;
@@ -2355,7 +2332,9 @@ MOBILE
 
   .contact-content {
     flex-direction: column;
+
     align-items: flex-start;
+
     gap: 25px;
   }
 
@@ -2369,6 +2348,7 @@ MOBILE
 
   .contact-buttons {
     width: 100%;
+
     flex-direction: column;
   }
 
@@ -2377,10 +2357,7 @@ MOBILE
     width: 100%;
   }
 
-
-  /* ----------------------------------------------------------
-  FOOTER
-  ---------------------------------------------------------- */
+  /* FOOTER */
 
   .footer {
     padding-top: 45px;
@@ -2388,7 +2365,9 @@ MOBILE
 
   .footer-grid {
     grid-template-columns: 1fr;
+
     gap: 30px;
+
     padding-bottom: 35px;
   }
 
@@ -2396,20 +2375,21 @@ MOBILE
     font-size: 11px;
   }
 
-
-  /* ==========================================================
-  CHECKOUT MODAL - MOBILE
-  ========================================================== */
+  /* CHECKOUT MODAL */
 
   .checkout-overlay {
     align-items: flex-start;
+
     padding: 10px;
   }
 
   .checkout-modal {
     width: 100%;
+
     max-height: calc(100vh - 20px);
+
     padding: 20px;
+
     border-radius: 16px;
   }
 
@@ -2423,13 +2403,16 @@ MOBILE
 
   .checkout-close {
     flex-shrink: 0;
+
     width: 36px;
     height: 36px;
+
     font-size: 22px;
   }
 
   .checkout-section {
     margin-bottom: 18px;
+
     padding-bottom: 16px;
   }
 
@@ -2443,6 +2426,7 @@ MOBILE
 
   .checkout-item {
     gap: 10px;
+
     padding: 10px 0;
   }
 
@@ -2460,6 +2444,7 @@ MOBILE
 
   .checkout-actions {
     flex-direction: column;
+
     gap: 8px;
   }
 
@@ -2467,10 +2452,7 @@ MOBILE
     width: 100%;
   }
 
-
-  /* ==========================================================
-  SUCCESS MODAL - MOBILE
-  ========================================================== */
+  /* SUCCESS MODAL */
 
   .success-modal {
     width: 100%;
@@ -2479,11 +2461,13 @@ MOBILE
   .success-icon {
     width: 58px;
     height: 58px;
+
     font-size: 28px;
   }
 
   .order-number {
     margin: 16px 0;
+
     padding: 15px;
   }
 
@@ -2493,25 +2477,23 @@ MOBILE
 
   .success-summary {
     grid-template-columns: 1fr;
+
     gap: 10px;
   }
 
-
-  /* ==========================================================
-  RECEIPT PREVIEW - MOBILE SCREEN ONLY
-  ========================================================== */
+  /* RECEIPT PREVIEW */
 
   .receipt-modal {
     width: min(100%, 420px);
+
     padding: 20px;
   }
 }
 
-
 /* ============================================================
-VERY SMALL PHONES
-400px and below
-============================================================ */
+   VERY SMALL PHONES
+   400px and below
+   ============================================================ */
 
 @media (max-width: 400px) {
 
@@ -2546,107 +2528,55 @@ VERY SMALL PHONES
 
 /* ============================================================
    PRINT RECEIPT
+   80MM THERMAL RECEIPT
    ============================================================ */
-
-/*
-   IMPORTANT:
-
-   NORMAL WEBSITE:
-   - unchanged
-
-   PRINT:
-   - A6 portrait
-   - one page
-   - receipt only
-   - no website
-   - no buttons
-*/
 
 @media print {
 
   /* ----------------------------------------------------------
-     A6 PAPER
+     PAPER SIZE
      ---------------------------------------------------------- */
 
   @page {
-    size: A6 portrait;
+    size: 80mm auto;
     margin: 0;
   }
 
   html {
-    width: 105mm !important;
-    height: 148mm !important;
+    width: 80mm !important;
 
     margin: 0 !important;
     padding: 0 !important;
-
-    overflow: hidden !important;
-  }
-
-  body {
-    width: 105mm !important;
-    height: 148mm !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    overflow: hidden !important;
 
     background: white !important;
   }
 
-  /* ----------------------------------------------------------
-     HIDE EVERYTHING
-     ---------------------------------------------------------- */
-
-  body > * {
-    display: none !important;
-  }
-
-  /* ----------------------------------------------------------
-     SHOW RECEIPT
-     ---------------------------------------------------------- */
-
-  body > #root {
-    display: block !important;
-
-    width: 105mm !important;
-    height: 148mm !important;
+  body {
+    width: 80mm !important;
 
     margin: 0 !important;
     padding: 0 !important;
 
-    overflow: hidden !important;
-  }
+    background: white !important;
 
-  #root {
-    width: 105mm !important;
-    height: 148mm !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    overflow: hidden !important;
-  }
-
-  #root > .app {
-    width: 105mm !important;
-    height: 148mm !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    overflow: hidden !important;
+    overflow: visible !important;
   }
 
   /* ----------------------------------------------------------
-     HIDE NORMAL APP CONTENT
+     HIDE ENTIRE WEBSITE
      ---------------------------------------------------------- */
 
-  #root > .app > header,
-  #root > .app > main,
-  #root > .app > footer {
-    display: none !important;
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* ----------------------------------------------------------
+     SHOW RECEIPT ONLY
+     ---------------------------------------------------------- */
+
+  .receipt-overlay,
+  .receipt-overlay * {
+    visibility: visible !important;
   }
 
   /* ----------------------------------------------------------
@@ -2658,26 +2588,23 @@ VERY SMALL PHONES
 
     top: 0 !important;
     left: 0 !important;
-    right: auto !important;
-    bottom: auto !important;
 
-    width: 105mm !important;
-    height: 148mm !important;
+    width: 80mm !important;
+    min-width: 80mm !important;
+    max-width: 80mm !important;
 
-    min-width: 105mm !important;
-    min-height: 148mm !important;
-
-    max-width: 105mm !important;
-    max-height: 148mm !important;
-
-    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
 
     margin: 0 !important;
     padding: 0 !important;
 
-    overflow: hidden !important;
+    display: block !important;
 
     background: white !important;
+
+    overflow: visible !important;
 
     border: 0 !important;
 
@@ -2694,29 +2621,28 @@ VERY SMALL PHONES
     top: 0 !important;
     left: 0 !important;
 
-    width: 105mm !important;
-    height: 148mm !important;
+    width: 80mm !important;
+    min-width: 80mm !important;
+    max-width: 80mm !important;
 
-    min-width: 105mm !important;
-    min-height: 148mm !important;
-
-    max-width: 105mm !important;
-    max-height: 148mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
 
     margin: 0 !important;
 
-    padding: 7mm !important;
-
-    overflow: hidden !important;
+    padding: 4mm !important;
 
     background: white !important;
 
-    border: 0 !important;
+    color: #000 !important;
+
+    border: none !important;
     border-radius: 0 !important;
 
     box-shadow: none !important;
 
-    color: #000 !important;
+    overflow: visible !important;
 
     font-family:
       "Courier New",
@@ -2733,46 +2659,70 @@ VERY SMALL PHONES
   }
 
   /* ----------------------------------------------------------
-     RECEIPT CONTENT
+     RECEIPT HEADER
      ---------------------------------------------------------- */
 
-  .receipt-header,
-  .receipt-info,
-  .receipt-items,
-  .receipt-totals,
-  .receipt-payment-status,
-  .receipt-notes,
-  .receipt-footer {
+  .receipt-header {
     page-break-inside: avoid !important;
-
     break-inside: avoid !important;
   }
 
   .receipt-business-name {
+    color: #000 !important;
+
     font-size: 18px !important;
+    font-weight: 900 !important;
   }
 
   .receipt-business-subtitle,
   .receipt-business-location,
   .receipt-business-contact {
+    color: #000 !important;
+
     font-size: 8px !important;
   }
+
+  /* ----------------------------------------------------------
+     DIVIDER
+     ---------------------------------------------------------- */
 
   .receipt-divider {
     margin: 5px 0 !important;
 
+    color: #000 !important;
+
     font-size: 8px !important;
   }
+
+  /* ----------------------------------------------------------
+     ORDER INFORMATION
+     ---------------------------------------------------------- */
 
   .receipt-info {
     gap: 2px !important;
 
+    color: #000 !important;
+
     font-size: 8px !important;
+
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
   .receipt-info > div {
-    grid-template-columns: 65px 1fr !important;
+    grid-template-columns:
+      65px
+      1fr !important;
   }
+
+  .receipt-info span,
+  .receipt-info strong {
+    color: #000 !important;
+  }
+
+  /* ----------------------------------------------------------
+     ITEMS
+     ---------------------------------------------------------- */
 
   .receipt-items-heading,
   .receipt-item {
@@ -2783,49 +2733,133 @@ VERY SMALL PHONES
 
     gap: 3px !important;
 
+    color: #000 !important;
+
     font-size: 8px !important;
+  }
+
+  .receipt-items-heading {
+    padding-bottom: 4px !important;
+
+    font-weight: 900 !important;
+
+    border-bottom: 1px solid #000 !important;
+  }
+
+  .receipt-items-heading span:nth-child(2),
+  .receipt-items-heading span:nth-child(3),
+  .receipt-item-qty,
+  .receipt-item-amount {
+    text-align: right !important;
   }
 
   .receipt-item {
     padding: 2px 0 !important;
+
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
   }
+
+  .receipt-item-name {
+    overflow-wrap: anywhere !important;
+  }
+
+  /* ----------------------------------------------------------
+     TOTALS
+     ---------------------------------------------------------- */
 
   .receipt-totals {
     gap: 2px !important;
 
+    color: #000 !important;
+
     font-size: 8px !important;
+
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .receipt-totals > div {
+    color: #000 !important;
   }
 
   .receipt-total-main {
+    margin-top: 4px !important;
+
     padding: 4px 0 !important;
 
+    border-top: 1px solid #000 !important;
+    border-bottom: 1px solid #000 !important;
+
+    color: #000 !important;
+
     font-size: 10px !important;
+    font-weight: 900 !important;
   }
 
   .receipt-balance {
+    color: #000 !important;
+
     font-size: 9px !important;
   }
+
+  /* ----------------------------------------------------------
+     PAYMENT STATUS
+     ---------------------------------------------------------- */
 
   .receipt-payment-status {
     margin-top: 6px !important;
 
     padding: 4px !important;
 
+    border: 1px solid #000 !important;
+
+    color: #000 !important;
+
     font-size: 8px !important;
+    font-weight: 900 !important;
+
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
+  /* ----------------------------------------------------------
+     NOTES
+     ---------------------------------------------------------- */
+
   .receipt-notes {
+    color: #000 !important;
+
     font-size: 7px !important;
+
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
+
+  .receipt-notes strong,
+  .receipt-notes p {
+    color: #000 !important;
+  }
+
+  /* ----------------------------------------------------------
+     FOOTER
+     ---------------------------------------------------------- */
 
   .receipt-footer {
     margin-top: 8px !important;
 
+    color: #000 !important;
+
     font-size: 7px !important;
+
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
   .receipt-footer-brand {
     margin-top: 3px !important;
+
+    color: #000 !important;
 
     font-size: 9px !important;
   }
@@ -2839,107 +2873,19 @@ VERY SMALL PHONES
   }
 
   /* ----------------------------------------------------------
-     REMOVE MODAL EFFECTS
+     PREVENT UNNECESSARY PAGE BREAKS
      ---------------------------------------------------------- */
 
-  .checkout-overlay {
-    background: white !important;
-  }
-
-  /* ----------------------------------------------------------
-     FORCE NO EXTRA PAGES
-     ---------------------------------------------------------- */
-
-  * {
-    page-break-before: avoid !important;
-    page-break-after: avoid !important;
-  }
-}
-
-/* ============================================================
-   RECEIPT PRINTING
-   80MM THERMAL RECEIPT
-   ============================================================ */
-
-@media print {
-
-  /* Hide everything except the receipt */
-  body * {
-    visibility: hidden !important;
-  }
-
-  .receipt-overlay,
-  .receipt-overlay * {
-    visibility: visible !important;
-  }
-
-  /* Remove screen overlay */
-  .receipt-overlay {
-    position: static !important;
-    inset: auto !important;
-    width: 80mm !important;
-    min-width: 80mm !important;
-    max-width: 80mm !important;
-    height: auto !important;
-    min-height: 0 !important;
-    background: white !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow: visible !important;
-  }
-
-  /* Receipt itself */
-  .receipt-modal {
-    position: static !important;
-    width: 80mm !important;
-    max-width: 80mm !important;
-    min-width: 80mm !important;
-
-    margin: 0 !important;
-    padding: 4mm !important;
-
-    box-shadow: none !important;
-    border: none !important;
-    border-radius: 0 !important;
-
-    background: white !important;
-
-    color: #000 !important;
-
-    overflow: visible !important;
-  }
-
-  /* Hide buttons when printing */
-  .receipt-actions {
-    display: none !important;
-  }
-
-  /* Receipt text */
-  .receipt-business-name {
-    color: #000 !important;
-  }
-
-  .receipt-business-subtitle,
-  .receipt-business-location,
-  .receipt-business-contact,
+  .receipt-header,
   .receipt-info,
   .receipt-items,
   .receipt-totals,
   .receipt-payment-status,
   .receipt-notes,
   .receipt-footer {
-    color: #000 !important;
-  }
-
-  /* Prevent receipt items from breaking badly */
-  .receipt-item {
-    break-inside: avoid !important;
     page-break-inside: avoid !important;
-  }
 
-  /* Remove unnecessary page margins */
-  @page {
-    size: 80mm auto;
-    margin: 0;
+    break-inside: avoid !important;
   }
 }
+```
